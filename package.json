@@ -1,6 +1,6 @@
 {
   "name": "react-native-pinch-encoded",
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "React Native fetch with SSL Pinning support",
   "main": "index.js",
   "scripts": {
