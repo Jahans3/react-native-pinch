@@ -30,7 +30,7 @@ public class HttpUtil {
     private static final String DEFAULT_CONTENT_TYPE = "application/json";
 
     private String getResponseBody(InputStream responseStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream, "ISO-8559-1"));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream, "ISO-8859-1"));
         StringBuilder sb = new StringBuilder();
         String line;
 
