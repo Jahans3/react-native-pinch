@@ -95,8 +95,8 @@ public class HttpUtil {
 
         if (request.body != null && (method.equals("POST") || method.equals("PUT"))) {
             // Set the content length of the body.
-            final String contentLength = Integer.toString(request.body.getBytes().length);
-            connection.setRequestProperty("Content-length", contentLength);
+//            final String contentLength = Integer.toString(request.body.getBytes().length);
+//            connection.setRequestProperty("Content-length", contentLength);
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setUseCaches(false);
