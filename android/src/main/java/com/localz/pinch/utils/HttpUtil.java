@@ -79,6 +79,7 @@ public class HttpUtil {
         HttpsURLConnection connection;
         URL url = new URL(request.endpoint);
         String method = request.method.toUpperCase();
+        final int contentLength = request.body.getBytes().length;
 
         connection = (HttpsURLConnection) url.openConnection();
         if (request.certFilename != null) {
@@ -95,7 +96,6 @@ public class HttpUtil {
 
         if (request.body != null && (method.equals("POST") || method.equals("PUT"))) {
             // Set the content length of the body.
-            final int contentLength = request.body.getBytes().length;
             connection.setRequestProperty("Content-length", Integer.toString(contentLength));
             connection.setDoInput(true);
             connection.setDoOutput(true);
