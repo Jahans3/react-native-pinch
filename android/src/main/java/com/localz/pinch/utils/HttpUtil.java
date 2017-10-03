@@ -9,6 +9,7 @@ import com.localz.pinch.models.HttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,7 +30,7 @@ public class HttpUtil {
     private static final String DEFAULT_CONTENT_TYPE = "application/json";
 
     private String getResponseBody(InputStream responseStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream, "UTF-8"));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream, "ISO-8559-1"));
         StringBuilder sb = new StringBuilder();
         String line;
 
@@ -87,21 +88,21 @@ public class HttpUtil {
 
         connection = prepareRequestHeaders(connection, request.headers);
 
-        connection.setRequestProperty("Accept-Charset", "UTF-8");
+        connection.setRequestProperty("Accept-Charset", "ISO-8859-1");
         connection.setAllowUserInteraction(false);
         connection.setConnectTimeout(request.timeout);
         connection.setReadTimeout(request.timeout);
 
         if (request.body != null && (method.equals("POST") || method.equals("PUT"))) {
             // Set the content length of the body.
-            connection.setRequestProperty("Content-length", request.body.getBytes().length + "");
+            connection.setRequestProperty("Content-length", request.body.getBytes().length.toString());
             connection.setDoInput(true);
             connection.setDoOutput(true);
             connection.setUseCaches(false);
 
             // Send the JSON as body of the request.
             OutputStream outputStream = connection.getOutputStream();
-            outputStream.write(request.body.getBytes("UTF-8"));
+            outputStream.write(request.body.getBytes("ISO-8859-1"));
             outputStream.close();
         }
 
