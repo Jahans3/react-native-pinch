@@ -26,7 +26,6 @@ import com.localz.pinch.utils.JsonUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-impirt java.lang.Integer;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
