@@ -125,7 +125,8 @@ public class HttpUtil {
         String statusText;
 
         try {
-            final String bodyString = new String(getResponseBody(responseStream), "ISO-8859-1");
+            final String bodyString = getResponseBody(responseStream);
+            final String parsedBodyString = new String(bodyString, "ISO-8859-1");
             connection = prepareRequest(request);
 
             connection.connect();
@@ -136,7 +137,7 @@ public class HttpUtil {
 
             response.statusCode = status;
             response.statusText = statusText;
-            response.bodyString = bodyString;
+            response.bodyString = parsedBodyString;
             response.headers = getResponseHeaders(connection);
 
             return response;
