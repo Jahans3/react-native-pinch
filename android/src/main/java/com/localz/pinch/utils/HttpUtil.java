@@ -87,7 +87,7 @@ public class HttpUtil {
 
         connection = prepareRequestHeaders(connection, request.headers);
 
-        connection.setRequestProperty("Accept-Charset", "ISO-8859-1");
+        connection.setRequestProperty("Accept-Charset", "UTF-8");
         connection.setAllowUserInteraction(false);
         connection.setConnectTimeout(request.timeout);
         connection.setReadTimeout(request.timeout);
