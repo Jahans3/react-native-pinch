@@ -38,7 +38,7 @@ public class HttpUtil {
         }
         bufferedReader.close();
 
-        return sb.toString();
+        return sb.toString("ISO-8859-1");
     }
 
     private JSONObject getResponseHeaders(HttpsURLConnection connection) {
