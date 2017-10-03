@@ -29,7 +29,7 @@ public class HttpUtil {
     private static final String DEFAULT_CONTENT_TYPE = "application/json";
 
     private String getResponseBody(InputStream responseStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(responseStream, "ISO-8859-1"));
         StringBuilder sb = new StringBuilder();
         String line;
 
@@ -87,7 +87,7 @@ public class HttpUtil {
 
         connection = prepareRequestHeaders(connection, request.headers);
 
-        connection.setRequestProperty("Accept-Charset", "UTF-8");
+        connection.setRequestProperty("Accept-Charset", "ISO-8859-1");
         connection.setAllowUserInteraction(false);
         connection.setConnectTimeout(request.timeout);
         connection.setReadTimeout(request.timeout);
@@ -101,7 +101,7 @@ public class HttpUtil {
 
             // Send the JSON as body of the request.
             OutputStream outputStream = connection.getOutputStream();
-            outputStream.write(request.body.getBytes("UTF-8"));
+            outputStream.write(request.body.getBytes("ISO-8859-1"));
             outputStream.close();
         }
 
